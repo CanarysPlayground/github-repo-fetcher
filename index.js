@@ -155,23 +155,24 @@ const writeCsv = (orgName, repoDetails) => {
 // Main function
 (async () => {
   console.log('🔍 Debug: Environment variables passed to the action:');
-  console.log(`ORG_NAMES: ${process.env.ORG_NAMES}`);
-  console.log(`GITHUB_PAT: ${process.env.GITHUB_PAT ? '*****' : 'Not provided'}`);
+  console.log(`Process Arguments: ${process.argv.join(', ')}`);
 
-  const orgNamesInput = process.env.ORG_NAMES || '';
+  const args = process.argv.slice(2);
+  const pat = args[0];
+  const orgNamesInput = args[1];
+  const perPage = parseInt(args[2]) || 100;
+
   if (!orgNamesInput) {
     console.error('❌ Error: ORG_NAMES is missing. Please provide organization names.');
     process.exit(1); // Exit if ORG_NAMES is missing
   }
 
-  const pat = process.env.GITHUB_PAT;
   if (!pat) {
     console.error('❌ Error: GITHUB_PAT (Personal Access Token) is missing.');
     process.exit(1); // Exit if GITHUB_PAT is missing
   }
 
   const orgNames = orgNamesInput.split(',').map((org) => org.trim());
-  const perPage = parseInt(process.env.PER_PAGE) || 100;
 
   console.log(`📦 Orgs to fetch: ${orgNames}`);
 
