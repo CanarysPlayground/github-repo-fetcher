@@ -14,7 +14,7 @@ inputs:
 runs:
   using: 'node16'
   main: 'index.js'
-env:
-  INPUT_PAT: ${{ inputs.pat }}
-  INPUT_ORGS: ${{ inputs.orgs }}
-  INPUT_PER_PAGE: ${{ inputs.per_page }}
+  env:
+    INPUT_PAT: ${{ inputs.pat }}
+    INPUT_ORGS: ${{ inputs.orgs }}
+    INPUT_PER_PAGE: ${{ inputs.per_page }}
