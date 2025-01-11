@@ -1,6 +1,5 @@
 name: 'GitHub Repositories Details Fetcher'
 description: 'Fetch details of GitHub repositories and generate CSV'
-author: 'Your Name or Organization'
 inputs:
   pat:
     description: 'GitHub Personal Access Token (PAT)'
@@ -12,12 +11,13 @@ inputs:
     description: 'Number of repositories per page'
     required: false
     default: '100'
-outputs:
-  summary:
-    description: 'Summary of fetched organization details'
 runs:
   using: 'node16'
   main: 'index.js'
+  args:
+    - ${{ inputs.pat }}
+    - ${{ inputs.orgs }}
+    - ${{ inputs.per_page }}
 branding:
-  color: 'blue'
   icon: 'server'
+  color: 'blue'
