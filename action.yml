@@ -1,0 +1,23 @@
+name: 'GitHub Repositories Details Fetcher'
+description: 'Fetch details of GitHub repositories and generate CSV'
+author: 'Your Name or Organization'
+inputs:
+  pat:
+    description: 'GitHub Personal Access Token (PAT)'
+    required: true
+  orgs:
+    description: 'Comma-separated GitHub Organization names'
+    required: true
+  per_page:
+    description: 'Number of repositories per page'
+    required: false
+    default: '100'
+outputs:
+  summary:
+    description: 'Summary of fetched organization details'
+runs:
+  using: 'node16'
+  main: 'index.js'
+branding:
+  color: 'blue'
+  icon: 'server'
