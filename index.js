@@ -154,8 +154,19 @@ const writeCsv = (orgName, repoDetails) => {
 
 // Main function
 (async () => {
-  const orgNames = process.env.ORG_NAMES.split(',').map((org) => org.trim());
+  const orgNamesInput = process.env.ORG_NAMES || ''; // Ensure it's not undefined
+  if (!orgNamesInput) {
+    console.error('❌ Error: ORG_NAMES is missing. Please provide organization names.');
+    process.exit(1); // Exit the script if ORG_NAMES is missing
+  }
+
   const pat = process.env.GITHUB_PAT;
+  if (!pat) {
+    console.error('❌ Error: GITHUB_PAT (Personal Access Token) is missing.');
+    process.exit(1); // Exit the script if GITHUB_PAT is missing
+  }
+
+  const orgNames = orgNamesInput.split(',').map((org) => org.trim());
   const perPage = parseInt(process.env.PER_PAGE) || 100;
 
   let summary = '';
