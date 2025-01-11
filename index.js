@@ -163,12 +163,12 @@ const writeCsv = (orgName, repoDetails) => {
   const perPage = parseInt(process.env.INPUT_PER_PAGE) || 100;
 
   if (!orgNamesInput) {
-    console.error('❌ Error: ORG_NAMES is missing. Please provide organization names.');
+    console.error('❌ Error: INPUT_ORGS is missing. Please provide organization names.');
     process.exit(1);
   }
 
   if (!pat) {
-    console.error('❌ Error: GITHUB_PAT (Personal Access Token) is missing.');
+    console.error('❌ Error: INPUT_PAT (Personal Access Token) is missing.');
     process.exit(1);
   }
 
