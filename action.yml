@@ -14,10 +14,7 @@ inputs:
 runs:
   using: 'node16'
   main: 'index.js'
-  args:
-    - ${{ inputs.pat }}
-    - ${{ inputs.orgs }}
-    - ${{ inputs.per_page }}
-branding:
-  icon: 'server'
-  color: 'blue'
+env:
+  INPUT_PAT: ${{ inputs.pat }}
+  INPUT_ORGS: ${{ inputs.orgs }}
+  INPUT_PER_PAGE: ${{ inputs.per_page }}
